@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/95e237bcdd.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <nav>
+                    <img src="images/finallogo2.png" class="finallogo2">
+                    <ul>
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#ambitions">Ambitions</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            <div class="header-text">
+            <p>
+                BTech Student
+            </p>
+            <h1>Hi, I'm Neha</h1>
+        </div>
+        </div>
+        </div>
+        <!----------about---------->
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="images/about1.jpeg">
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="sub-title">About Me</h1>
+                        <p>
+                            Hey there! I'm someone who loves solving problems, working with amazing people, and turning ideas into reality.
+                            Whether it's brainstorming new concepts,learning something new or 
+                            leading a team toward a common goal (I love working in a collaborative environment) , I'm always up for a challenge.
+                            I bring my leadership skills to the table to keep things fun and productive. Right now, I'm on a mission to grow, learn and take on exciting 
+                            opportunities that let me make a positive impact.
+                            If you're looking for someone who's all about teamwork, growth, and making things happen, let's chat!!! 
+                        </p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>Critical problem solving</span><br>Active problem solving</li>
+                                <li><span>Leadership</span><br>Help to guide teams</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2023</span><br>Higher Secondary Education from KMC Palakkad</li>
+                                <li><span>2021</span><br>High school from KMC Palakkad</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------ambitions------------>
+        <div id="ambitions">
+            <div class="container">
+                <h1 class="sub-title">Ambitions</h1>
+                <div class="ambitions-list">
+                    <div>
+                        <i class="fa-regular fa-face-smile"></i>
+                        <h2>To be happy</h2>
+                        <p>
+                            It's a simple thing yet still most of us forget to be happy in our career journey.
+                             It's not easy to manage your career and your happiness.
+                             But I would like to take it as a challenge and always remember my first ambition.
+                        </p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <h2>Teaching</h2>
+                        <p>
+                            For me, teaching is a passion. I love to share my knowledge with anyone.
+                             And also I can tell that I am an amazing teacher.
+                             If I know something about a topic I would make you impressed but If I don't know about it I would research it and will teach you.    
+                        </p>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-app-store"></i>
+                        <h2>App developer</h2>
+                        <p>
+                            I've always been fascinated by the way apps can transform everyday lives, making tasks simpler, more accessible, and engaging.
+                            The idea of creating something that could be in the hands of millions excites me. 
+                            I would like to design intuitive interfaces and writing efficient code to bring ideas to life.      
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------contact------------->
+        <div id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-paper-plane"></i> contact@example.com</p>
+                    <p><i class="fa-solid fa-phone"></i> 1234560987</p>
+                    </div>
+                    <div class="contact-right">
+                        <form name="submit-to-google-sheet">
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Your message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                        </form>
+                        <span id="msg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p><i class="fa-regular fa-copyright"></i>Copyright Neha</p>
+            </div>
+        </div>
+        <script>
+
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+
+        </script>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbys0vT_kCR6Tn4-dGFFo-9x1WBbPjKt9ThDRo9PocrmAblhik7FvRo50pMOYQ0V1iDP/exec'
+            const form = document.forms['submit-to-google-sheet']
+            const msg = document.getElementById("msg")
+
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    msg.innerHTML = "Message sent successfully"
+                    setTimeout(function(){
+                        msg.innerHTML = ""
+                    },5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+    </body>
+</html>
